@@ -20092,6 +20092,7 @@ pre[class*="language-"] {
             }
           } else {
             this._setWs(this._createWebSocket());
+            this._notifyStateChange();
           }
         }
         return this.ws;
@@ -20102,7 +20103,6 @@ pre[class*="language-"] {
         var _ws = null;
         try {
           _ws = new window.WebSocket(this.url, this.protocols);
-          this._notifyStateChange();
           // bind socket events to component events
           _ws.onopen = this.onOpen.bind(this);
           _ws.onclose = this.onClose.bind(this);
