@@ -1,0 +1,23 @@
+language: node_js
+dist: trusty
+sudo: required
+addons:
+  firefox: "latest"
+node_js:
+  - "node"
+  - "stable"
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install -g polymer-cli
+script:
+  - polymer install -v
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_PAGES_TOKEN
+  keep-history: true
+  verbose: true
+  on:
+    branch: master
